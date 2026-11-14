@@ -1,10 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sarah Frances Crawford Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarah Frances Crawford</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2333;
+    --navy: #22304f;
+    --steel: #5b6b8c;
+    --rule: #c9d0de;
+    --paper: #f4f6fa;
+    --pink: #ff8fb1;
+    --hot: #d6648a;
+    --blush: #fff0f5;
+    --petal: #ffd1e0;
+    --plum: #5a3a4a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; line-height: 1.6; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--hot); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+  /* ---------- Formal researcher section ---------- */
+  .formal { background: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  .topnav { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+  .topnav .wrap { display: flex; gap: 24px; justify-content: flex-end; padding-top: 14px; padding-bottom: 14px; font-size: 0.95rem; flex-wrap: wrap; }
+  .topnav a { text-decoration: none; color: var(--steel); }
+  .topnav a:hover { color: var(--navy); text-decoration: underline; }
+
+  header.hero { padding: 72px 0 48px; border-bottom: 1px solid var(--rule); }
+  .hero .wrap { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+  .hero img { width: 180px; height: 220px; object-fit: cover; border: 1px solid var(--rule); background: #e6eaf2; }
+  .hero h1 { font-weight: 600; font-size: 2.6rem; line-height: 1.15; margin: 0 0 8px; color: var(--navy); }
+  .hero .role { font-size: 1.15rem; color: var(--steel); margin: 0 0 16px; }
+  .hero p { margin: 0; max-width: 46ch; }
+
+  .formal section { padding: 48px 0; }
+  .formal h2 { font-weight: 600; font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
+
+  details.entry { border-top: 1px solid var(--rule); padding: 14px 0; }
+  details.entry:last-of-type { border-bottom: 1px solid var(--rule); }
+  details.entry summary { cursor: pointer; font-weight: 600; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  details.entry summary::-webkit-details-marker { display: none; }
+  details.entry summary::after { content: '+'; color: var(--steel); font-weight: 400; font-size: 1.3rem; line-height: 1; }
+  details.entry[open] summary::after { content: '\2212'; }
+  details.entry .meta { display: block; font-weight: 400; color: var(--steel); font-size: 0.95rem; }
+  details.entry .body { padding: 10px 0 4px; max-width: 62ch; }
+  details.entry .body p { margin: 0 0 8px; }
+
+  /* ---------- Wavy transition ---------- */
+  .wave { display: block; width: 100%; height: 70px; background: var(--blush); }
+  .wave path { fill: var(--paper); }
+
+  /* ---------- Pink bubbly section ---------- */
+  .cute { background: var(--blush); color: var(--plum); font-family: 'Quicksand', sans-serif; padding: 40px 0 80px; position: relative; overflow: hidden; }
+  .cute .wrap { max-width: 820px; position: relative; z-index: 1; }
+  .cute h2 { font-family: 'Pacifico', cursive; font-weight: 400; font-size: 2.6rem; color: var(--hot); margin: 0 0 8px; text-align: center; }
+  .cute .sub { text-align: center; margin: 0 0 36px; font-weight: 600; }
+
+  .bubble { position: absolute; border-radius: 50%; background: var(--petal); opacity: 0.55; z-index: 0; }
+  .b1 { width: 160px; height: 160px; top: 40px; left: -40px; }
+  .b2 { width: 90px; height: 90px; top: 220px; right: 30px; }
+  .b3 { width: 220px; height: 220px; top: 640px; right: -70px; }
+  .b4 { width: 120px; height: 120px; top: 900px; left: 20px; }
+
+  .song { background: #fff; border: 3px solid var(--petal); border-radius: 28px; padding: 22px 26px; margin-bottom: 22px; }
+  .song h3 { margin: 0 0 4px; font-size: 1.25rem; color: var(--hot); }
+  .song p { margin: 0 0 12px; }
+  .song audio { width: 100%; margin: 4px 0 12px; }
+  .pill { display: inline-block; background: var(--pink); color: #fff; font-weight: 700; text-decoration: none; padding: 8px 18px; border-radius: 999px; margin-right: 8px; margin-top: 4px; transition: transform .15s, background .15s; }
+  .pill:hover { background: var(--hot); transform: scale(1.05); }
+
+  /* ---------- Future goals ---------- */
+  .goals { background: linear-gradient(var(--blush), #fff); color: var(--plum); font-family: 'Quicksand', sans-serif; padding: 40px 0 90px; }
+  .goals .wrap { max-width: 720px; }
+  .goals h2 { font-family: 'Pacifico', cursive; font-weight: 400; color: var(--hot); font-size: 2.2rem; margin: 0 0 16px; }
+  .goals .goal { background: #fff; border-left: 8px solid var(--pink); border-radius: 0 24px 24px 0; padding: 16px 22px; margin-bottom: 16px; box-shadow: 0 4px 14px rgba(214,100,138,.12); }
+  .goals .goal h3 { margin: 0 0 4px; font-size: 1.1rem; color: var(--hot); }
+  .goals .goal p { margin: 0; }
+
+  footer { text-align: center; padding: 24px; font-family: 'Quicksand', sans-serif; color: var(--plum); background: #fff; }
+</style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>This is my first website.</p>
+
+<!-- ================= FORMAL: top of page ================= -->
+<div class="formal">
+  <nav class="topnav" aria-label="Page sections">
+    <div class="wrap">
+      <a href="#experience">Research experience</a>
+      <a href="#publications">Posters and papers</a>
+      <a href="#music">Music</a>
+      <a href="#future">Future goals</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <!-- Put your photo in the repo as photo.jpg -->
+      <img src="photo.jpg" alt="Portrait of Sarah Frances Crawford">
+      <div>
+        <h1>Sarah Frances Crawford</h1>
+        <p class="role">[Your title], [Your university or lab]</p>
+        <p>[Two or three sentences about your research interests and what you study.]</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Research experience</h2>
+
+      <details class="entry">
+        <summary>
+          <span>[Project or lab name]
+            <span class="meta">[Your role], [Institution], [Start year] to [End year]</span>
+          </span>
+        </summary>
+        <div class="body">
+          <p>[Describe the question you studied, the methods you used, and what you contributed.]</p>
+        </div>
+      </details>
+
+      <details class="entry">
+        <summary>
+          <span>[Another project or lab]
+            <span class="meta">[Your role], [Institution], [Years]</span>
+          </span>
+        </summary>
+        <div class="body">
+          <p>[Description of your work here.]</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <h2>Posters and papers</h2>
+
+      <details class="entry">
+        <summary>
+          <span>[Poster or paper title]
+            <span class="meta">[Conference or journal], [Year]</span>
+          </span>
+        </summary>
+        <div class="body">
+          <p>[Authors, short abstract, or one-line takeaway.]</p>
+          <p><a href="#">View poster or paper</a></p>
+        </div>
+      </details>
+
+      <details class="entry">
+        <summary>
+          <span>[Another title]
+            <span class="meta">[Venue], [Year]</span>
+          </span>
+        </summary>
+        <div class="body">
+          <p>[Authors or summary.]</p>
+          <p><a href="#">View poster or paper</a></p>
+        </div>
+      </details>
+    </div>
+  </section>
+</div>
+
+<!-- Wavy shift from formal to cute -->
+<svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,0 H1200 V30 C1100,80 1000,0 900,30 C800,60 700,0 600,30 C500,60 400,0 300,30 C200,60 100,0 0,30 Z"/>
+</svg>
+
+<!-- ================= CUTE: music ================= -->
+<div class="cute" id="music">
+  <span class="bubble b1"></span><span class="bubble b2"></span>
+  <span class="bubble b3"></span><span class="bubble b4"></span>
+  <div class="wrap">
+    <h2>My music</h2>
+    <p class="sub">When I'm not in the lab, I'm making songs.</p>
+
+    <!-- Copy this whole block for each song. Put audio files in an "audio" folder in your repo. -->
+    <div class="song">
+      <h3>[Song title one]</h3>
+      <p>[A sentence about this song.]</p>
+      <audio controls preload="none" src="audio/song1.mp3"></audio>
+      <a class="pill" href="#" target="_blank" rel="noopener">Spotify</a>
+      <a class="pill" href="#" target="_blank" rel="noopener">SoundCloud</a>
+    </div>
+
+    <div class="song">
+      <h3>[Song title two]</h3>
+      <p>[A sentence about this song.]</p>
+      <audio controls preload="none" src="audio/song2.mp3"></audio>
+      <a class="pill" href="#" target="_blank" rel="noopener">YouTube</a>
+    </div>
+
+    <div class="song">
+      <h3>[Song title three]</h3>
+      <p>[A sentence about this song.]</p>
+      <audio controls preload="none" src="audio/song3.mp3"></audio>
+      <a class="pill" href="#" target="_blank" rel="noopener">Listen</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Future research goals ================= -->
+<div class="goals" id="future">
+  <div class="wrap">
+    <h2>Where I'm headed</h2>
+    <div class="goal">
+      <h3>[Goal one]</h3>
+      <p>[What you want to study next and why it matters.]</p>
+    </div>
+    <div class="goal">
+      <h3>[Goal two]</h3>
+      <p>[A method, skill, or question you want to pursue.]</p>
+    </div>
+    <div class="goal">
+      <h3>[Goal three]</h3>
+      <p>[Your longer-term vision for your research career.]</p>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; Sarah Frances Crawford</footer>
+
 </body>
 </html>
